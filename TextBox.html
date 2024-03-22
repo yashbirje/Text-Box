@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="textboxstyle.css">
+	<title></title>
+</head>
+<body>
+	<h1 align="center" class="heading">Text Box</h1>
+	<div class="container" align="center">
+		<form class="textboxform">
+			<label>Enter your text below</label>
+			<br><br>
+			<textarea id="text" rows="10" cols="70" onkeyup="updateInfo()" autofocus></textarea><br><br>
+
+			<button type="button" onclick="transformUpperCase()">UPPERCASE</button>
+			<button type="button" onclick="transformLowerCase()">LOWECASE</button>
+			<button type="button" onclick="findText()">FIND</button>
+			<button type="button" onclick="changeColor()">CHANGE COLOR</button>
+			<button type="button" onclick="textUnderline()">UNDERLINE</button><br><br>
+			<button type="button" onclick="textFont()">FONT</button>
+			<h2 id="textinfo">This text contains 0 words and 0 characters.</h2>
+		</form>
+	</div>
+	<script type="text/javascript">
+		let text=document.getElementById("text");
+		let textInfo=document.getElementById('textinfo');
+		let clr;
+		let textFT;
+
+		function transformUpperCase() {
+			text.value=text.value.toUpperCase();
+		}
+		function transformLowerCase() {
+			text.value=text.value.toLowerCase();
+		}
+		function findText(){
+			let searchText= prompt("Enter the text : ");
+		if (text.value.includes(searchText)) 
+			{
+				alert(`Search text "${searchText}" is present`);
+			}
+			else{
+				alert(`Search text "${searchText}" is not present`);
+			}
+		}
+		function changeColor(){
+			clr=prompt(("Enter your fav color : ").toLowerCase())
+			text.style.color=clr;
+		}
+		function textUnderline(){
+			text.style.textDecoration=`underline 2px solid ${clr}`
+		}
+		function updateInfo(){
+			let numberOfWords=text.value.trim().split(" ").length
+
+			textInfo.innerHTML=`This text contains ${numberOfWords} words and ${text.value.length} character`
+		}
+		function textFont(){
+			textFT=prompt(("Enter your font style : ").textFont())
+			text.style.font=textFT;
+		}
+	</script>
+
+</body>
+</html>
